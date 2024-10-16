@@ -89,7 +89,7 @@ export default function Home() {
         <section
           className="bg-cover bg-center h-screen text-white"
           style={{
-            backgroundImage: 'url(https://picsum.photos/1920/1080?random=10)',
+            backgroundImage: 'url(https://i.ibb.co/Sw9T5qk/pexels-pixabay-163186.jpg)',
           }}
         >
           <div className="bg-black bg-opacity-50 h-full flex items-center">
