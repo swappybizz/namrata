@@ -1,6 +1,7 @@
 // pages/index.js
 
 import Head from 'next/head';
+import { useState } from 'react';
 
 export default function Home() {
   // JSON data for courses
@@ -26,20 +27,34 @@ export default function Home() {
     // Add more courses as needed
   ];
 
-  // JSON data for videos
-  const videos = [
+  // JSON data for quotes
+  const quotes = [
     {
       id: 1,
-      title: "Introduction to Homeopathy",
-      videoUrl: "https://youtu.be/lE6RYpe9IT0?si=QWfTNAtZM1s1AaZ1",
+      text: "The physician's highest calling is to make sick people healthy - to heal, as it is termed. - Samuel Hahnemann",
     },
     {
       id: 2,
-      title: "Holistic Healing Practices",
-      videoUrl: "https://www.youtube.com/watch?v=NSKxvLWqyOY",
+      text: "Homeopathy cures a larger percentage of cases than any other method of treatment. - Mahatma Gandhi",
     },
-    // Add more videos as needed
+    {
+      id: 3,
+      text: "Homeopathy is wholly capable of satisfying the therapeutic demands of this age better than any other system or school of medicine. - Charles Frederick Menninger",
+    },
+    // Add more quotes as needed
   ];
+
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  const nextQuote = () => {
+    setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+  };
+
+  const prevQuote = () => {
+    setCurrentQuoteIndex(
+      (prevIndex) => (prevIndex - 1 + quotes.length) % quotes.length
+    );
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -69,8 +84,8 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a href="#videos" className="hover:underline">
-                  Videos
+                <a href="#quotes" className="hover:underline">
+                  Quotes
                 </a>
               </li>
               <li>
@@ -89,7 +104,8 @@ export default function Home() {
         <section
           className="bg-cover bg-center h-screen text-white"
           style={{
-            backgroundImage: 'url(https://i.ibb.co/Sw9T5qk/pexels-pixabay-163186.jpg)',
+            backgroundImage:
+              'url(https://i.ibb.co/Sw9T5qk/pexels-pixabay-163186.jpg)',
           }}
         >
           <div className="bg-black bg-opacity-50 h-full flex items-center">
@@ -133,22 +149,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Videos Section */}
-        <section id="videos" className="bg-gray-100 py-16">
+        {/* Quotes Carousel Section */}
+        <section id="quotes" className="bg-gray-100 py-16">
           <h3 className="text-3xl font-bold text-center mb-12">
-            Educational Videos
+            Homeopathic Quotes
           </h3>
-          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            {videos.map((video) => (
-              <div key={video.id} className="aspect-w-16 aspect-h-9">
-                <iframe
-                  src={video.videoUrl}
-                  title={video.title}
-                  className="w-full h-full"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ))}
+          <div className="container mx-auto flex justify-center items-center space-x-4">
+            <button
+              onClick={prevQuote}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            >
+              &#60;
+            </button>
+            <div className="text-center max-w-xl px-4">
+              <p className="text-xl italic">"{quotes[currentQuoteIndex].text}"</p>
+            </div>
+            <button
+              onClick={nextQuote}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            >
+              &#62;
+            </button>
           </div>
         </section>
 
