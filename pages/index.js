@@ -162,7 +162,7 @@ export default function Home() {
               &#60;
             </button>
             <div className="text-center max-w-xl px-4">
-              <p className="text-xl italic">"{quotes[currentQuoteIndex].text}"</p>
+              <p className="text-xl italic text-gray-600">"{quotes[currentQuoteIndex].text}"</p>
             </div>
             <button
               onClick={nextQuote}
