@@ -9,19 +9,19 @@ export default function Home() {
       id: 1,
       title: "Beginner's Guide to Homeopathy",
       description: "An introductory course to natural remedies.",
-      imageUrl: "https://picsum.photos/600/400?random=1",
+      imageUrl: "https://i.ibb.co/L9P6R2k/pexels-asphotograpy-105028.jpg",
     },
     {
       id: 2,
       title: "Advanced Healing Techniques",
       description: "Deepen your understanding of holistic health.",
-      imageUrl: "https://picsum.photos/600/400?random=2",
+      imageUrl: "https://i.ibb.co/QMnZFyD/pexels-n-voitkevich-7526023.jpg",
     },
     {
       id: 3,
       title: "Personalized Wellness Plans",
       description: "Get a wellness plan tailored to your needs.",
-      imageUrl: "https://picsum.photos/600/400?random=3",
+      imageUrl: "https://i.ibb.co/QHHLkKG/pexels-yankrukov-5480162.jpg",
     },
     // Add more courses as needed
   ];
@@ -31,12 +31,12 @@ export default function Home() {
     {
       id: 1,
       title: "Introduction to Homeopathy",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://youtu.be/lE6RYpe9IT0?si=QWfTNAtZM1s1AaZ1",
     },
     {
       id: 2,
       title: "Holistic Healing Practices",
-      videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+      videoUrl: "https://www.youtube.com/watch?v=NSKxvLWqyOY",
     },
     // Add more videos as needed
   ];
