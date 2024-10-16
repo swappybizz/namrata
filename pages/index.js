@@ -1,114 +1,179 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+// pages/index.js
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Head from 'next/head';
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // JSON data for courses
+  const courses = [
+    {
+      id: 1,
+      title: "Beginner's Guide to Homeopathy",
+      description: "An introductory course to natural remedies.",
+      imageUrl: "https://picsum.photos/600/400?random=1",
+    },
+    {
+      id: 2,
+      title: "Advanced Healing Techniques",
+      description: "Deepen your understanding of holistic health.",
+      imageUrl: "https://picsum.photos/600/400?random=2",
+    },
+    {
+      id: 3,
+      title: "Personalized Wellness Plans",
+      description: "Get a wellness plan tailored to your needs.",
+      imageUrl: "https://picsum.photos/600/400?random=3",
+    },
+    // Add more courses as needed
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // JSON data for videos
+  const videos = [
+    {
+      id: 1,
+      title: "Introduction to Homeopathy",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    },
+    {
+      id: 2,
+      title: "Holistic Healing Practices",
+      videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+    },
+    // Add more videos as needed
+  ];
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Head>
+        <title>Homeopathic Healing</title>
+        <meta
+          name="description"
+          content="Homeopathic Practitioner - Courses and Consultations"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* Header */}
+      <header className="bg-green-600 text-white p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Homeopathic Healing</h1>
+          <nav>
+            <ul className="flex space-x-6">
+              <li>
+                <a href="#" className="hover:underline">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#courses" className="hover:underline">
+                  Courses
+                </a>
+              </li>
+              <li>
+                <a href="#videos" className="hover:underline">
+                  Videos
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:underline">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section
+          className="bg-cover bg-center h-screen text-white"
+          style={{
+            backgroundImage: 'url(https://picsum.photos/1920/1080?random=10)',
+          }}
+        >
+          <div className="bg-black bg-opacity-50 h-full flex items-center">
+            <div className="container mx-auto px-4">
+              <h2 className="text-5xl font-bold mb-4">
+                Embrace Natural Healing
+              </h2>
+              <p className="text-2xl mb-8">
+                Discover the power of homeopathy for a balanced life.
+              </p>
+              <button className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700">
+                Explore Our Courses
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Courses Section */}
+        <section id="courses" className="container mx-auto py-16">
+          <h3 className="text-3xl font-bold text-center mb-12">Our Courses</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {courses.map((course) => (
+              <div
+                key={course.id}
+                className="border rounded-lg overflow-hidden shadow-lg"
+              >
+                <img
+                  src={course.imageUrl}
+                  alt={course.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h4 className="text-xl font-bold mb-2">{course.title}</h4>
+                  <p className="text-gray-700 mb-4">{course.description}</p>
+                  <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Videos Section */}
+        <section id="videos" className="bg-gray-100 py-16">
+          <h3 className="text-3xl font-bold text-center mb-12">
+            Educational Videos
+          </h3>
+          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {videos.map((video) => (
+              <div key={video.id} className="aspect-w-16 aspect-h-9">
+                <iframe
+                  src={video.videoUrl}
+                  title={video.title}
+                  className="w-full h-full"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Placeholder Payment Section */}
+        <section className="container mx-auto py-16">
+          <h3 className="text-3xl font-bold text-center mb-12">
+            Secure Payments
+          </h3>
+          <div className="text-center">
+            <p className="text-xl mb-8">We accept all major payment methods.</p>
+            <button className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700">
+              Proceed to Payment
+            </button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer id="contact" className="bg-green-600 text-white p-6">
+        <div className="container mx-auto text-center">
+          <p>
+            &copy; {new Date().getFullYear()} Homeopathic Healing. All rights
+            reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );
